@@ -2,9 +2,10 @@ extends KinematicBody2D
 
 var speed = 100
 var arah = -1
-var damage = 1
+var damage = 10
 
 signal player_hit
+
 
 func _physics_process(delta):
 	if (is_on_wall() or (not $RayCast2D.is_colliding())):
@@ -25,4 +26,8 @@ func _physics_process(delta):
 
 
 func _on_HitArea_body_entered(body):
-	emit_signal("player_hit", damage)
+	emit_signal("player_hit", damage, position)
+
+
+func _on_Area2D_body_entered(body):
+	print("pemain")

@@ -9,7 +9,7 @@
 [ext_resource path="res://assets/bg/Spring2Long1_2.png" type="Texture" id=7]
 [ext_resource path="res://assets/bg/grassHalf.png" type="Texture" id=8]
 [ext_resource path="res://char/koin.tscn" type="PackedScene" id=9]
-[ext_resource path="res://gui/DefaultGUI.tscn" type="PackedScene" id=10]
+[ext_resource path="res://gui/GUI.tscn" type="PackedScene" id=10]
 [ext_resource path="res://char/Enemy.tscn" type="PackedScene" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -462,7 +462,7 @@ collision_layer = 16
 position = Vector2( 624, 472 )
 collision_layer = 16
 
-[node name="CanvasLayer" parent="." instance=ExtResource( 10 )]
+[node name="GUI" parent="." instance=ExtResource( 10 )]
 
 [node name="Enemys" type="Control" parent="."]
 margin_right = 40.0

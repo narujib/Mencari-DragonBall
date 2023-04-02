@@ -4,7 +4,7 @@ export var speed = 300
 export var jump_speed = 1200
 var movement = Vector2(0,0)
 const gravity = 50
-export var lives = 5
+export var lives = 30
 
 
 
@@ -14,10 +14,16 @@ func _get_lives():
 func _set_lives(l):
 	lives = l
 	
-func _get_hit(damage):
+func _get_hit(damage, enemy_position):
 	_set_lives(_get_lives() - damage)
 	print(lives)
-
+	
+	var arah = (enemy_position - position).normalized()
+	var pantul = Vector2(-arah * 2500)
+	move_and_slide(pantul, Vector2.UP, false, 4, PI/4, false)
+	set_modulate(Color(0,1,1,1))
+	$Timer.start()
+	
 
 func _physics_process(delta):
 	
@@ -51,3 +57,7 @@ func _physics_process(delta):
 	move_and_slide(movement, Vector2(0,-1))
 
 	
+
+
+func _on_Timer_timeout():
+	set_modulate(Color(1,1,1,1))
