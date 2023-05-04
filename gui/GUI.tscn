@@ -6,6 +6,7 @@
 
 [node name="GUI" type="CanvasLayer"]
 script = ExtResource( 2 )
+seconds = 10
 
 [node name="Control" type="Control" parent="."]
 anchor_left = 1.0
@@ -34,8 +35,10 @@ valign = 1
 autowrap = true
 
 [node name="Control2" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -1024.0
+margin_bottom = 600.0
 
 [node name="TextureProgress" type="TextureProgress" parent="Control2"]
 margin_left = 875.0
@@ -47,3 +50,41 @@ max_value = 30.0
 step = 10.0
 value = 30.0
 texture_progress = ExtResource( 3 )
+
+[node name="Control3" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="min" type="RichTextLabel" parent="Control3"]
+margin_left = 195.0
+margin_top = 35.0
+margin_right = 235.0
+margin_bottom = 75.0
+rect_scale = Vector2( 2, 2 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+text = "00"
+
+[node name="sec" type="RichTextLabel" parent="Control3"]
+margin_left = 281.0
+margin_top = 18.0
+margin_right = 321.0
+margin_bottom = 58.0
+rect_scale = Vector2( 2, 2 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+text = "00"
+
+[node name="ms" type="RichTextLabel" parent="Control3"]
+margin_left = 517.0
+margin_top = 48.0
+margin_right = 557.0
+margin_bottom = 88.0
+rect_scale = Vector2( 2, 2 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+text = "0"
+
+[node name="Timer" type="Timer" parent="Control3"]
+process_mode = 0
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="Control3/Timer" to="." method="_on_Timer_timeout"]

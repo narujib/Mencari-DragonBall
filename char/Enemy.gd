@@ -3,8 +3,11 @@ extends KinematicBody2D
 var speed = 100
 var arah = -1
 var damage = 10
+var health = 10
+var enemy_point = 20
 
 signal player_hit
+signal enemy_hit
 
 
 func _physics_process(delta):
@@ -30,4 +33,6 @@ func _on_HitArea_body_entered(body):
 
 
 func _on_Area2D_body_entered(body):
-	print("pemain")
+	$AnimatedSprite.play("die")
+	$AnimationPlayer.play("die")
+	emit_signal("enemy_hit", health, enemy_point)

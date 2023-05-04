@@ -5,6 +5,7 @@ export var jump_speed = 1200
 var movement = Vector2(0,0)
 const gravity = 50
 export var lives = 30
+export var max_lives = 30
 
 
 
@@ -13,13 +14,23 @@ func _get_lives():
 
 func _set_lives(l):
 	lives = l
+
+func _get_hit_enemy(health):
+	#max_lives = max_lives
+	var prev_lives = lives
+	if(prev_lives == max_lives):
+		_set_lives(_get_lives() + 0)
+	else:
+		_set_lives(_get_lives() + health)
+	print(lives)
+	
 	
 func _get_hit(damage, enemy_position):
 	_set_lives(_get_lives() - damage)
 	print(lives)
 	
 	var arah = (enemy_position - position).normalized()
-	var pantul = Vector2(-arah * 2500)
+	var pantul = Vector2(-arah * 5000)
 	move_and_slide(pantul, Vector2.UP, false, 4, PI/4, false)
 	set_modulate(Color(0,1,1,1))
 	$Timer.start()
